@@ -32,12 +32,6 @@ h2 {
     max-width: 100%
   }
   
-  .image {
-    padding-left: 20px;
-    flex-basis: 40%
-    
-  }
-  
   .text {
     font-size: 20px;
     font-family: 'Apple Chancery', cursive;
@@ -48,3 +42,27 @@ h2 {
     font-family: 'Apple Chancery', cursive;
     padding-right: 20px;
   }
+
+body {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.full-img {
+    display: block;
+    width: 640px;
+    height: 360px;
+}
+.thumb-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.thumb-bar img {
+    width: 20%;
+    cursor: pointer;
+}
+
+.thumb-bar img:hover {
+    opacity: 0.5
+}
