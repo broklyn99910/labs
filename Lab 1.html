@@ -3,6 +3,8 @@
 
 <head>
     <meta charset= "utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet" type="text/css">
     <title> ANIME ROCKZ </title>
 </head>
@@ -98,6 +100,78 @@
         <p2> <a href="https://myanimelist.net/animelist/Seimiko">Seimiko's MAL</a> </p2> <br>
         <a href="Lab 1_nanachi.html"><img src="fujiwara.gif"></a>
         <p2> click on fujiwara for a comprehensive guide on why nanachi is best wafiu</p2>
+
+        <h3>ADD YOUR FAVORITE ANIME HERE:</h3>
+        <input type="text"><button>Add</button>
+        <ul>
+        </ul>
+        <script>
+            function addToList(content){
+                let itemElm = document.createElement("li");
+                itemElm.textContent = content;
+                let listElm = document.querySelector("ul");
+                listElm.appendChild(itemElm);
+            }
+    
+            function getUserItem(){
+                let inputElm = document.querySelector("input");
+                if (inputElm.value !== "") {
+                    addToList(inputElm.value); 
+                }
+                else {
+                    alert("put yo anime in kid");
+                }
+                inputElm.value = "";
+            }
+    
+            let buttonElm = document.querySelector("button");
+            buttonElm.addEventListener("click", getUserItem);
+            
+        </script>
+ <h1>a picture gallery of my favortie anime:</h1>
+ <label for="auto-advance">Auto Advance</label>
+ <input type="checkbox" name="auto-advance" id="auto-advance" checked=true>
+ <div class="full-img">
+   <img class="displayed-img" src="images/madeinabyssbackground.jpg">
+ </div>
+
+ <div class="thumb-bar">
+ </div>
+ <script>
+     let thumbBar = document.querySelector(".thumb-bar")
+    
+     let listOfImages = ["madeinabyssbackground", "ponyobackground", "oregairubackground", "nogamenolifebackground", "totorobackground"];
+    
+     listOfImages.forEach(function(imageName) {
+       
+         let imgElm = document.createElement("img");
+         imgElm.src = "images/" + imageName + ".jpg";
+         thumbBar.appendChild(imgElm);
+     });
+
+
+     let nextImageIndex = 0;
+     let intervalId = window.setInterval(function(){
+ 
+         if (document.querySelector("#auto-advance").checked) {
+
+             let bigImage = document.querySelector(".displayed-img");
+             let imageName = listOfImages[nextImageIndex];
+             bigImage.src = "images/" + imageName + ".jpg";
+
+            
+             nextImageIndex = (nextImageIndex + 1) % listOfImages.length;
+         }
+
+     }, 3000);
+
+     thumbBar.addEventListener("click", function(event){
+         let bigImage = document.querySelector(".displayed-img");
+         bigImage.src = event.target.src;
+         document.querySelector("#auto-advance").checked = false;
+     });
+     
+ </script>
 
 </body>
 
